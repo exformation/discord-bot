@@ -41,5 +41,11 @@ def get_card_data(card_name):
         return None
 
 
-# TODO: how do I load the token in safely?
-client.run(open('.env').read().strip())
+def main():
+    # TODO: how do I load the token in safely?
+    client.run(open('.env').read().strip())
+
+
+if __name__ == "__main__":
+    main()
+

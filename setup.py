@@ -6,5 +6,10 @@ setup(
     packages=find_packages(),
     install_requires=[
         'discord.py',
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'discord-bot = bot.main:main',
+        ],
+    },
 )
