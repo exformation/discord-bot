@@ -20,16 +20,20 @@ async def on_message(message):
         return
 
     urls = []
+    embeds = []
     matches = re.findall(r'\[(.*?)\]', message.content)
 
     for match in matches:
         card_data = get_card_data(match)
         if card_data:
+            embed = discord.Embed(url='https://cards.scryfall.io')
+            embed.set_image(url=card_data['image_uris']['border_crop'])
+            embeds.append(embed)
             urls.append(card_data['scryfall_uri'])
-            urls.append(card_data['image_uris']['border_crop'])
 
     if urls:
-        await message.channel.send('\n'.join(urls))
+        # await message.channel.send('\n'.join(urls))
+        await message.channel.send('\n'.join(urls), embeds=embeds)
 
 
 def get_card_data(card_name):
