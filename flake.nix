@@ -10,10 +10,16 @@
           python311
           python311Packages.python-lsp-server
           python311Packages.autopep8
-          python311Packages.evdev
           python311Packages.discordpy
           python311Packages.requests
         ];
       };
+      packages.x86_64-linux.default = with pkgs.python3Packages;
+        buildPythonPackage {
+          name = "discord-bot";
+          src = ./.;
+          propagatedBuildInputs =
+            [ python-lsp-server autopep8 discordpy requests ];
+        };
     };
 }
