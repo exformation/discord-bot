@@ -17,6 +17,8 @@
       packages.x86_64-linux.default = with pkgs.python311Packages;
         buildPythonPackage {
           name = "discord-bot";
+          pname = "discord-bot";
+          version = "0.0.1";
           src = ./.;
           propagatedBuildInputs = [ discordpy requests ];
         };
