@@ -18,8 +18,7 @@
         buildPythonPackage {
           name = "discord-bot";
           src = ./.;
-          propagatedBuildInputs =
-            [ python-lsp-server autopep8 discordpy requests ];
+          propagatedBuildInputs = [ discordpy requests ];
         };
     };
 }
