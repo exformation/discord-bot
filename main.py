@@ -7,9 +7,11 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 
+
 @client.event
 async def on_ready():
     print('Logged on as', client.user)
+
 
 @client.event
 async def on_message(message):
@@ -17,23 +19,27 @@ async def on_message(message):
     if message.author == client.user or message.channel.name != "magic-and-shit":
         return
 
-    image_urls = []
+    urls = []
     matches = re.findall(r'\[(.*?)\]', message.content)
 
     for match in matches:
         card_data = get_card_data(match)
         if card_data:
-            image_urls.append(card_data['scryfall_uri'])
-            image_urls.append(card_data['image_uris']['border_crop'])
+            urls.append(card_data['scryfall_uri'])
+            urls.append(card_data['image_uris']['border_crop'])
 
-    if image_urls:
-        await message.channel.send('\n'.join(image_urls))
+    if urls:
+        await message.channel.send('\n'.join(urls))
+
 
 def get_card_data(card_name):
+    # TODO: don't I need to join card_name with +?
     response = requests.get(f'https://api.scryfall.com/cards/named?fuzzy={card_name}')
     if response.status_code == 200:
         return response.json()
     else:
         return None
 
-client.run('token')
+
+# TODO: how do I load the token in safely?
+client.run(open('.env').read().strip())
