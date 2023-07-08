@@ -23,4 +23,4 @@ systemd.services.discord-bot = {
 };
 ```
 
-Some of this is a little hacky but she cute. 
+This bot is just a personal one for posting magic cards. It's not very useful for anyone else. 
