@@ -37,7 +37,6 @@ async def on_message(message):
 
 
 def get_card_data(card_name):
-    # TODO: don't I need to join card_name with +?
     response = requests.get(f'https://api.scryfall.com/cards/named?fuzzy={card_name}')
     if response.status_code == 200:
         return response.json()
@@ -46,7 +45,6 @@ def get_card_data(card_name):
 
 
 def main():
-    # TODO: how do I load the token in safely?
     client.run(open('.env').read().strip())
 
 
