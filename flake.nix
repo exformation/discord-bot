@@ -14,7 +14,7 @@
           python311Packages.requests
         ];
       };
-      packages.x86_64-linux.default = with pkgs.python3Packages;
+      packages.x86_64-linux.default = with pkgs.python311Packages;
         buildPythonPackage {
           name = "discord-bot";
           src = ./.;
