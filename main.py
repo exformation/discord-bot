@@ -13,7 +13,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    # don't respond to ourselves
+    # don't respond to ourselves or outside the magic channel
     if message.author == client.user or message.channel.name != "magic-and-shit":
         return
 
@@ -23,7 +23,8 @@ async def on_message(message):
     for match in matches:
         card_data = get_card_data(match)
         if card_data:
-            image_urls.append(card_data['image_uris']['normal'])
+            image_urls.append(card_data['scryfall_uri'])
+            image_urls.append(card_data['image_uris']['border_crop'])
 
     if image_urls:
         await message.channel.send('\n'.join(image_urls))
