@@ -26,15 +26,14 @@
           src = ./.;
           propagatedBuildInputs = [ discordpy requests ];
         };
-      packages.armv7l-linux.default = with pkgs_arm;
-        with python311Packages;
-        buildPythonPackage {
-          name = "discord-bot";
-          pname = "discord-bot";
-          version = "0.0.1";
-          src = ./.;
-          propagatedBuildInputs = [ discordpy requests ];
-        };
-
+      # packages.armv7l-linux.default = with pkgs_arm;
+      #   with python311Packages;
+      #   buildPythonPackage {
+      #     name = "discord-bot";
+      #     pname = "discord-bot";
+      #     version = "0.0.1";
+      #     src = ./.;
+      #     propagatedBuildInputs = [ discordpy requests ];
+      #   };
     };
 }
